@@ -1,0 +1,19 @@
+String[] initString =
+        { /* ...  fill array with initial text  ... */ };
+
+String[] initStyles =
+        { /* ...  fill array with names of styles  ... */ };
+
+JTextPane textPane = new JTextPane();
+StyledDocument doc = textPane.getStyledDocument();
+addStylesToDocument(doc);
+
+//Load the text pane with styled text.
+try {
+    for (int i=0; i < initString.length; i++) {
+        doc.insertString(doc.getLength(), initString[i],
+                         doc.getStyle(initStyles[i]));
+    }
+} catch (BadLocationException ble) {
+    System.err.println("Couldn't insert initial text into text pane.");
+}
